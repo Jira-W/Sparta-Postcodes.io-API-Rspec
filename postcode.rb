@@ -55,5 +55,4 @@ class Postcodesio
     a =  JSON.parse(self.class.post('/postcodes', body:{ "postcodes": postcodes_arr}).body)
       a["#{key}"][1]["#{key}"]["#{value}"]
   end
-
 end
