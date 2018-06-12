@@ -6,6 +6,7 @@ describe Postcodesio do
 
     before(:all) do
       @postcodesio = Postcodesio.new('w93pt', ['w93pt','nw88sy'])
+
     end
 
     it "should respond with a status message of 200" do
@@ -17,7 +18,7 @@ describe Postcodesio do
     end
 
     it "should return a postcode between 5-7 in length"  do
-      expect(@postcodesio.get_single_post_attributes("result", "postcode").length).to be_between(5, 7)
+      expect(@postcodesio.remove_space(@postcodesio.get_single_post_attributes("result", "postcode")).length).to be_between(5, 7)
     end
     #
     it "should return an quality key integer between 1-9" do
@@ -113,7 +114,8 @@ describe Postcodesio do
     end
 
     it "should return a postcode between 5-7 in length"  do
-      expect(@postcodesio.get_multiple_postcodes).to be_kind_of(Hash)
+      expect(@postcodesio.remove_space(@postcodesio.get_multi_post_attributes_1("result", "postcode")).length).to be_between(5, 7)
+      expect(@postcodesio.remove_space(@postcodesio.get_multi_post_attributes_2("result", "postcode")).length).to be_between(5, 7)
     end
 
     it "should return an quality key integer between 1-9" do
@@ -207,5 +209,4 @@ describe Postcodesio do
       expect(@postcodesio.get_multi_post_attributes_2("result", "incode").length).to be_between(3, 4)
     end
   end
-
 end
