@@ -12,6 +12,10 @@ class Postcodesio
 
   base_uri 'https://api.postcodes.io'
 
+  def remove_space(a)
+    a.gsub(' ','')
+  end
+
   def get_single_postcode
     JSON.parse(self.class.get("/postcodes/#{postcode}").body)
   end
