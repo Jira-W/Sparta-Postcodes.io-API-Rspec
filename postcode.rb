@@ -13,7 +13,7 @@ class Postcodesio
   base_uri 'https://api.postcodes.io'
 
   def remove_space(a)
-    a.gsub(' ','')
+    x = a.gsub(' ','')
   end
 
   def get_single_postcode
@@ -60,3 +60,6 @@ class Postcodesio
       a["#{key}"][1]["#{key}"]["#{value}"]
   end
 end
+
+t = Postcodesio.new('w93pt', ['w93pt','nw88sy'])
+p t.remove_space(t.get_single_post_attributes('result', 'postcode'))
